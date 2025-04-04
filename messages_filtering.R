@@ -61,4 +61,29 @@ library("quanteda")
 freq_terms <- findFreqTerms(sms_dtm_train, 5)
 freq_terms
 sms_dict <- dictionary(list(frequent_terms = freq_terms))
+sms_dict <- quanteda::dictionary(list(frequent_terms = freq_terms))
 exists("dictionary", where = asNamespace("quanteda"), inherits = FALSE)
+sms_dict <- Dict::dict(frequent_terms = freq_terms)
+sms_dict
+sms_train <- DocumentTermMatrix(sms_corpus_train,list(dict = sms_dict))
+sms_train
+sms_test  <- DocumentTermMatrix(sms_corpus_test,
+                                list(dict = sms_dict))
+sms_test
+convert_counts <- function(x) {
+  x <- ifelse(x > 0, 1, 0)
+  x <- factor(x, levels = c(0, 1), labels = c("No", "Yes"))
+  return(x)
+}
+sms_train <- apply(sms_train, MARGIN = 2, convert_counts)
+sms_test  <- apply(sms_test, MARGIN = 2, convert_counts)
+install.packages("e1071")
+library("e1071")
+sms_classifier <- naiveBayes(sms_train, sms_raw_train$type)
+sms_classifier
+sms_test_pred <- predict(sms_classifier, sms_test)
+library(gmodels)
+CrossTable(sms_test_pred, sms_raw_test$type,
+           prop.chisq = FALSE, prop.t = FALSE,
+           dnn = c('predicted', 'actual'))
+
