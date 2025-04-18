@@ -37,15 +37,7 @@ install.packages("e1071")
 install.packages("gmodels")
 ```
 
----
 
-## 🚀 How to Run
-
-1. Clone the repo:
-   ```bash
-   git clone https://github.com/your-username/sms-spam-classifier.git
-   cd sms-spam-classifier
-   ```
 
 2. Add `sms_spam.csv` to your R working directory.
 
@@ -89,14 +81,6 @@ wordcloud(spam$text, max.words = 40, scale = c(3, 0.5), random.order = FALSE)
 
 ---
 
-### 🧮 Confusion Matrix
-
-The confusion matrix compares predicted vs actual labels on the test data.
-
-![Confusion Matrix](images/confusion_matrix.png)
-
-You can generate it using:
-
 ```r
 CrossTable(sms_test_pred, sms_raw_test$type,
            prop.chisq = FALSE, prop.t = FALSE,
@@ -107,41 +91,18 @@ CrossTable(sms_test_pred, sms_raw_test$type,
 
 ## 📚 Dataset
 
-- **Source**: [UCI SMS Spam Collection](https://archive.ics.uci.edu/ml/datasets/sms+spam+collection)
+- **Source**: (http://www.dt.fee.unicamp.br/~tiago/smsspamcollection/)
 
 ---
 
 ## 👤 Author
 
-- Your Name – [your.email@example.com]
+- Adedeji Abdulsalam Adeyemi – [AdedejiAbdulsalam123@gmail.com]
 
----
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
----
 
 ## 💡 Contribution
 
 Pull requests are welcome! Feel free to fork the repo and improve or expand the project.
 
----
 
-## 📸 Note on Images
 
-Place your image files inside a folder named `/images` at the root of your repository:
-
-```
-sms-spam-classifier/
-├── images/
-│   ├── ham_wordcloud.png
-│   ├── spam_wordcloud.png
-│   └── confusion_matrix.png
-├── messages_filtering.R
-├── sms_spam.csv
-└── README.md
-```
-
-You can export the plots from RStudio using *"Export > Save as Image"* or `png()`/`jpeg()` functions in R.
