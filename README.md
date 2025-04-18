@@ -70,7 +70,7 @@ The following word clouds highlight the most frequent terms in the spam and ham 
 ![Ham Word Cloud](images/ham_wordcloud.png)
 
 #### 🚨 Spam Word Cloud
-![Spam Word Cloud]("C:\Users\VALTECH  COMPUTERS\Downloads\images\ham wordcloud.png")
+![Spam Word Cloud](Downloads\images\ham wordcloud.png)
 
 You can generate these using:
 
